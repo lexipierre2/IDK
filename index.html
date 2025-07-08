@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+       <div class="box">
+       <h2 class="h2">Do you want candy?</h2>
+       <button type="Yes" class="btn">Yes</button>
+       <button type="No" class="btn2">No</button>
+       </div>
+ <div id="popup" class="popup hidden" role="dialog" aria-modal="true">
+    <div class="popup-content">
+      <p id="popup-text"></p>
+      <!-- ⬇ image placeholder (stays hidden until “Yes” is clicked) -->
+      <img id="popup-img" class="popup-img hidden" alt="Candy image" />
+      <button class="popup-close">Close</button>
+    </div>
+  </div>
+    </div>
+   <script>
+for (let i = 0; i < 150; i++){
+  const s = document.createElement('div');
+  s.className = 'star';
+  s.style.left = Math.random()*100 + 'vw';
+  s.style.top  = Math.random()*100 + 'vh';
+  document.body.appendChild(s);
+}
+</script>
+<script>
+ const popup      = document.getElementById('popup');
+    const popupText  = document.getElementById('popup-text');
+    const popupImg   = document.getElementById('popup-img');
+    const closeBtn   = document.querySelector('.popup-close');
+
+    const candyURL = 'Candy.jpeg';
+    document.querySelector('.btn').addEventListener('click', () => {
+      popupText.textContent = 'Here you go! \uD83C\uDF6C';
+      popupImg.src = candyURL;
+      popupImg.classList.remove('hidden');
+      popup.classList.remove('hidden');
+    });
+
+    document.querySelector('.btn2').addEventListener('click', () => {
+      popupText.textContent = 'Maybe next time!';
+      popupImg.classList.add('hidden');
+      popup.classList.remove('hidden');
+    });
+
+    closeBtn.addEventListener('click', () => popup.classList.add('hidden'));
+
+    popup.addEventListener('click', e => { if(e.target===popup) popup.classList.add('hidden'); });
+  </script>
+</body>
+</html>
