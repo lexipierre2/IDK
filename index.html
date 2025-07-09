@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+    <h2 id="welcome-message" class="welcome"></h2>
     <div class="container">
        <div class="box">
        <h2 class="h2">Do you want candy?</h2>
@@ -18,11 +19,21 @@
       <p id="popup-text"></p>
       <!-- ⬇ image placeholder (stays hidden until “Yes” is clicked) -->
       <img id="popup-img" class="popup-img hidden" alt="Candy image" />
+       <img id="popup-img2" class="popup-img2 hidden" alt="emoji image" />
       <button class="popup-close">Close</button>
     </div>
   </div>
     </div>
    <script>
+    const params = new URLSearchParams(window.location.search);
+  const user = params.get('user');
+
+  const welcomeEl = document.getElementById('welcome-message');
+  if (user && welcomeEl) {
+    welcomeEl.textContent = `Hello, ${user} :)`;
+  }
+  
+
 for (let i = 0; i < 150; i++){
   const s = document.createElement('div');
   s.className = 'star';
@@ -35,19 +46,22 @@ for (let i = 0; i < 150; i++){
  const popup      = document.getElementById('popup');
     const popupText  = document.getElementById('popup-text');
     const popupImg   = document.getElementById('popup-img');
+    const popupImg2   = document.getElementById('popup-img2');
     const closeBtn   = document.querySelector('.popup-close');
 
     const candyURL = 'Candy.jpeg';
     document.querySelector('.btn').addEventListener('click', () => {
-      popupText.textContent = 'Here you go! \uD83C\uDF6C';
+      popupText.textContent = 'Here you go :) \uD83C\uDF6C';
       popupImg.src = candyURL;
       popupImg.classList.remove('hidden');
       popup.classList.remove('hidden');
     });
 
-    document.querySelector('.btn2').addEventListener('click', () => {
-      popupText.textContent = 'Maybe next time!';
-      popupImg.classList.add('hidden');
+    const emojiURL = 'emoji.jpg'
+      document.querySelector('.btn2').addEventListener('click', () => {
+      popupText.textContent = 'Maybe next time?';
+        popupImg.src = emojiURL;
+      popupImg2.classList.add('hidden');
       popup.classList.remove('hidden');
     });
 
@@ -57,3 +71,4 @@ for (let i = 0; i < 150; i++){
   </script>
 </body>
 </html>
+
