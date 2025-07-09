@@ -150,5 +150,6 @@ background-attachment: fixed;
       .container { padding: 28px 24px; width: 90%; }
       .btn, .btn2 { padding: 14px 22px; font-size: 16px; }
       .popup-content { padding: 1.5rem 2rem; width: 90%; }
+            .welcome        { font-size: 18px; margin-bottom: 8px; }
      }
   
